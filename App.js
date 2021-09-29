@@ -30,13 +30,17 @@ const App = () => {
     setResult(res.data.translatedText)
     console.log(res.data.translatedText)
   }
+  const refresh = () => {
+    setText("")
+    setResult("")
+  }
   return (
     <SafeAreaProvider>
       <ScrollView>
         <Header
           leftComponent={{ icon: 'menu', color: '#fff', iconStyle: { color: '#fff' } }}
           centerComponent={{ text: 'TRANSLATER', style: { color: '#fff' } }}
-          rightComponent={{ icon: 'refresh', color: '#fff' }}
+          rightComponent={{ icon: 'refresh', color: '#fff', onPress: refresh }}
         />
         <View style={{
           flex: 1,
@@ -77,7 +81,11 @@ const App = () => {
             }}
           />
         </View>
-        <Text>{result}</Text>
+        <Input
+          placeholder='Enter the word or sentence to traslate'
+          value={result}
+
+        />
 
       </ScrollView>
     </SafeAreaProvider>
